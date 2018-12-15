@@ -8,32 +8,33 @@
   </head>
   <body>
 
-    <div class="header">
-      <h1>Elizabeth</h1>
-    </div>
-
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
 
-        var $button = $('<button id="new-tweets">New Tweets</button>')
+        var $name = $('<h1 class="name">Kiwi</h1>');
+        $name.appendTo($body);
+
+        var $handle = $('<h2 class="handle">@KiwiTheWeenie</h1>');
+        $handle.appendTo($body);
+
+        var $button = $('<button id="new-tweets">New Tweets</button>');
         $button.appendTo($body);
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div class="tweet"></div>');
-          var now = new Date();
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
           $tweet.appendTo($body);
           index -= 1;
         }
 
 
         $("#new-tweets").click(function(){
-
+          $(".tweet").remove();
         })
       });
 
