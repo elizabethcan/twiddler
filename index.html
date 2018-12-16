@@ -26,24 +26,27 @@
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div class="tweet"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+          var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
+          $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
           $tweet.appendTo($body);
           index -= 1;
-        }
-
+        };
 
         $("#new-tweets").on("click", function(){
-          var numItems = $('.tweet').length;
           $(".tweet").remove();
           var index = streams.home.length - 1;
           while(index >= streams.home.length - 25){
             var tweet = streams.home[index];
-            var $tweet = $('<div class="tweet"></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+            var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
+            $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
             $tweet.appendTo($body);
             index -= 1;
           }
+        });
+
+        $(`#${tweet.user}`).on("click", function(){
+          console.log(`clicked ${tweet.user}`);
+          $(`.tweet`).not(`#${tweet.user}`).hide();
         });
       });
 
