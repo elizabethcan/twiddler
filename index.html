@@ -17,11 +17,11 @@
         var $name = $('<h1 class="name">Kiwi</h1>');
         $name.appendTo($body);
 
-        var $handle = $('<h2 class="handle">@KiwiTheWeenie</h1>');
-        $handle.appendTo($body);
+        var $username = $('<h2 class="username">@KiwiTheWeenie</h1>');
+        $username.appendTo($body);
 
-        var $button = $('<button id="new-tweets">New Tweets</button>');
-        $button.appendTo($body);
+        var $refreshButton = $('<button id="new-tweets">New Tweets</button>');
+        $refreshButton.appendTo($body);
 
         var index = streams.home.length - 1;
         while(index >= 0){
@@ -32,10 +32,13 @@
           index -= 1;
         };
 
-        $("#new-tweets").on("click", function(){
+        var $backButton = $('<button id="back-button">Back To Feed</button>');
+        $backButton.appendTo($body).hide();
+
+        $refreshButton.on("click", function(){
           $(".tweet").remove();
           var index = streams.home.length - 1;
-          while(index >= streams.home.length - 25){
+          while(index >= streams.home.length - 10){
             var tweet = streams.home[index];
             var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
             $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
@@ -44,10 +47,17 @@
           }
         });
 
-        $(`#${tweet.user}`).on("click", function(){
-          console.log(`clicked ${tweet.user}`);
-          $(`.tweet`).not(`#${tweet.user}`).hide();
+        $('.tweet').each(function(){
+          $(this).on("click", function(e){
+            $("#new-tweets").hide();
+            $('.tweet').not(`#${e.target.id}`).hide();
+            $backButton.show();
+          });
         });
+
+        $backButton.on("click", function(){
+
+        })
       });
 
     </script>
