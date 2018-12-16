@@ -33,9 +33,18 @@
         }
 
 
-        $("#new-tweets").click(function(){
+        $("#new-tweets").on("click", function(){
+          var numItems = $('.tweet').length;
           $(".tweet").remove();
-        })
+          var index = streams.home.length - 1;
+          while(index >= streams.home.length - 25){
+            var tweet = streams.home[index];
+            var $tweet = $('<div class="tweet"></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+            $tweet.appendTo($body);
+            index -= 1;
+          }
+        });
       });
 
     </script>
