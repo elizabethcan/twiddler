@@ -44,9 +44,7 @@
 
         //functionality for refresh button
         $refreshButton.on("click", function(){
-          console.log("new tweets clicked");
           var numOfTweets = $(".tweet").length;
-          console.log(`numOfTweets: ${numOfTweets}`);
           var index = numOfTweets - 1;
           while(index <= streams.home.length - 1){
             var tweet = streams.home[index];
@@ -59,7 +57,6 @@
 
         //functionality for clicking on a user's tweet
         $(document).on("click", ".tweet", function(e){
-          console.log("tweet clicked")
           $refreshButton.hide();
           $('.tweet').not(`#${e.target.id}`).hide();
           $backButton.show();
@@ -67,7 +64,6 @@
 
         //functionality for back button
         $backButton.on("click", function(){
-          console.log("back button clicked");
           $('.tweet').show();
           $refreshButton.show();
           $backButton.hide();
