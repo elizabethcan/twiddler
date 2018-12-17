@@ -32,13 +32,13 @@
         //fetch first tweets
         console.log(`streams.home.length: ${streams.home.length}`)
         //function fetchTweets() {
-          var index = streams.home.length - 1;
-          while(index >= 0){
+          var index = 0;
+          while(index <= streams.home.length - 1){
             var tweet = streams.home[index];
             var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
             $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
             $tweet.prependTo($tweetsDiv);
-            index -= 1;
+            index += 1;
           };
         //}
 
@@ -48,25 +48,22 @@
           //$(".tweet").remove();
           var numOfTweets = $(".tweet").length;
           console.log(`numOfTweets: ${numOfTweets}`);
-          var index = streams.home.length - 1;
-          while(index >= numOfTweets){
+          var index = numOfTweets - 1;
+          while(index <= streams.home.length - 1){
             var tweet = streams.home[index];
             var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
             $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
             $tweet.prependTo($tweetsDiv);
-            index -= 1;
+            index += 1;
           }
         });
 
-
         //functionality for clicking on a user's tweet
-        $('.tweet').each(function(){
-          $(this).on("click", function(e){
-            console.log("tweet clicked")
-            $refreshButton.hide();
-            $('.tweet').not(`#${e.target.id}`).hide();
-            $backButton.show();
-          });
+        $(document).on("click", ".tweet", function(e){
+          console.log("tweet clicked")
+          $refreshButton.hide();
+          $('.tweet').not(`#${e.target.id}`).hide();
+          $backButton.show();
         });
 
         //functionality for back button
