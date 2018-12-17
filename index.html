@@ -23,6 +23,12 @@
         var $refreshButton = $('<button id="new-tweets">New Tweets</button>');
         $refreshButton.appendTo($body);
 
+        var $backButton = $('<button id="back-button">Back To Feed</button>');
+        $backButton.appendTo($body).hide();
+
+        //fetch first tweets
+        console.log(`streams.home.length: ${streams.home.length}`)
+        var endingIndex = streams.home.length;
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
@@ -32,31 +38,40 @@
           index -= 1;
         };
 
-        var $backButton = $('<button id="back-button">Back To Feed</button>');
-        $backButton.appendTo($body).hide();
-
+        //functionality for refresh button
         $refreshButton.on("click", function(){
-          $(".tweet").remove();
+          console.log("new tweets clicked");
+          //$(".tweet").remove();
+          console.log(`streams.home.length: ${streams.home.length}`)
+          console.log(`endingIndex: ${endingIndex}`)
           var index = streams.home.length - 1;
-          while(index >= streams.home.length - 10){
+          while(index >= streams.home.length - endingIndex){
             var tweet = streams.home[index];
             var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
             $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
             $tweet.appendTo($body);
             index -= 1;
           }
+          var endingIndex = streams.home.length;
+          console.log(`endingIndex: ${endingIndex}`)
         });
 
+        //functionality for clicking on a user's tweet
         $('.tweet').each(function(){
           $(this).on("click", function(e){
-            $("#new-tweets").hide();
+            console.log("tweet clicked")
+            $refreshButton.hide();
             $('.tweet').not(`#${e.target.id}`).hide();
             $backButton.show();
           });
         });
 
+        //functionality for back button
         $backButton.on("click", function(){
-
+          console.log("back button clicked");
+          $('.tweet').show();
+          $refreshButton.show();
+          $backButton.hide();
         })
       });
 
