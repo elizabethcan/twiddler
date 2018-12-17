@@ -26,35 +26,38 @@
         var $backButton = $('<button id="back-button">Back To Feed</button>');
         $backButton.appendTo($body).hide();
 
+        var $tweetsDiv = $(`<div class="tweetsDiv"></div>`)
+        $tweetsDiv.appendTo($body);
+
         //fetch first tweets
         console.log(`streams.home.length: ${streams.home.length}`)
-        var endingIndex = streams.home.length;
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
-          $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
-          $tweet.appendTo($body);
-          index -= 1;
-        };
+        //function fetchTweets() {
+          var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
+            $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
+            $tweet.prependTo($tweetsDiv);
+            index -= 1;
+          };
+        //}
 
         //functionality for refresh button
         $refreshButton.on("click", function(){
           console.log("new tweets clicked");
           //$(".tweet").remove();
-          console.log(`streams.home.length: ${streams.home.length}`)
-          console.log(`endingIndex: ${endingIndex}`)
+          var numOfTweets = $(".tweet").length;
+          console.log(`numOfTweets: ${numOfTweets}`);
           var index = streams.home.length - 1;
-          while(index >= streams.home.length - endingIndex){
+          while(index >= numOfTweets){
             var tweet = streams.home[index];
             var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
             $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
-            $tweet.appendTo($body);
+            $tweet.prependTo($tweetsDiv);
             index -= 1;
           }
-          var endingIndex = streams.home.length;
-          console.log(`endingIndex: ${endingIndex}`)
         });
+
 
         //functionality for clicking on a user's tweet
         $('.tweet').each(function(){
