@@ -45,7 +45,7 @@
         //functionality for refresh button
         $refreshButton.on("click", function(){
           var numOfTweets = $(".tweet").length;
-          var index = numOfTweets - 1;
+          var index = numOfTweets;
           while(index <= streams.home.length - 1){
             var tweet = streams.home[index];
             var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
