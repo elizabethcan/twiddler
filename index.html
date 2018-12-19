@@ -26,7 +26,9 @@
 
         $('<h2 class="username">@KiwiTheWeenie</h1>').appendTo($info);
 
-        var $feed = $('<div class ="feed"></div>');
+        $('<p> I\'m a dachshund/terrier mix from Southern California. I may look cute but I got a whole lot of attitude, so DON\'T get on my bad side, unless you want to end up like Chief. </p>').appendTo($profileDiv);
+
+        var $feed = $('<div class="feed"></div>');
         $feed.appendTo($body);
 
         var $refreshButton = $('<button id="new-tweets">New Tweets</button>');
@@ -39,16 +41,14 @@
         $tweetsDiv.appendTo($feed);
 
         //fetch first tweets
-        //function fetchTweets() {
-          var index = 0;
-          while(index <= streams.home.length - 1){
-            var tweet = streams.home[index];
-            var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
-            $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
-            $tweet.prependTo($tweetsDiv);
-            index += 1;
-          };
-        //}
+        var index = 0;
+        while(index <= streams.home.length - 1){
+          var tweet = streams.home[index];
+          var $tweet = $(`<div class="tweet" id="${tweet.user}"></div>`);
+          $tweet.text(`@${tweet.user}: ${tweet.message} ${tweet.created_at}`);
+          $tweet.prependTo($tweetsDiv);
+          index += 1;
+        };
 
         //functionality for refresh button
         $refreshButton.on("click", function(){

@@ -1,23 +1,73 @@
 
+body {
+  background-color: #E0FFFF;
+  font-family: 'Courier';
+}
+
 button {
 	border-radius: 4px;
-  color: green;
+  color: white;
+  background-color: #00008B;
 	display: block;
 	font-weight: 700;
-	width: 200px;
+	width: 750px;
 	padding: 5px;
-	border: 1px solid green;
-  margin: 20px 100px;
+  border: 1px solid #00008B;
+  text-transform: uppercase;
+}
+
+button:hover {
+  color: white;
+  background-color: #4169E1;
+  border: 1px solid #4169E1;
 }
 
 iframe {
-  width: 160px;
-  height: 120px;
+  width: 320px;
+  height: 240px;
+  margin: 20px 90px;
+  border: 2px solid #00008B;
+  border-radius: 2px;
 }
 
 .profile {
-  width: 200px;
+  width: 500px;
   float: left;
+  margin: 20px;
+  position: fixed;
+  background-color: #66CDAA;
+  border: 2px solid #00008B;
+  border-radius: 2px;
+}
+
+.info {
+  margin: 20px 90px;
+}
+
+.name {
+  margin: 0px 120px;
+}
+
+.username {
+  margin: 0px 60px;
+  color: #696969;
+}
+
+p {
+  width: 450px;
+  background-color: #B0E0E6;
+  border: 1px solid #00008B;
+  border-radius: 4px;
+  margin: 20px;
+  text-align: center;
+}
+
+.feed {
+  width: 750px;
+  float: right;
+  border: 2px solid #00008B;
+  border-radius: 10px;
+  background-color: #87CEFA;
   margin: 20px;
 }
 
@@ -26,13 +76,15 @@ iframe {
   color: black;
   display: block;
   font-weight: 700;
-  width: 500px;
+  width: 700px;
   padding: 5px;
   border: 1px solid black;
   margin: 20px;
+  background-color: white;
 }
 
-.feed {
-  width: 600px;
-  float: right;
+.tweet:hover {
+  color: white;
+  background-color: #4169E1;
+  border: 1px solid #4169E1;
 }
