@@ -14,23 +14,31 @@
         var $body = $('body');
         $body.html('');
 
-        var $name = $('<h1 class="name">Kiwi</h1>');
-        $name.appendTo($body);
+        var $profileDiv = $('<div class ="profile"></div>');
+        $profileDiv.appendTo($body);
 
-        var $username = $('<h2 class="username">@KiwiTheWeenie</h1>');
-        $username.appendTo($body);
+        $('<iframe src="https://drive.google.com/file/d/1uXc1Pb2ukpBwRYB5vHb7ZNypO7MQQmjZ/preview"></iframe>').appendTo($profileDiv);
+
+        var $info = $('<div class ="info"></div>');
+        $info.appendTo($profileDiv);
+
+        $('<h1 class="name">Kiwi</h1>').appendTo($info);
+
+        $('<h2 class="username">@KiwiTheWeenie</h1>').appendTo($info);
+
+        var $feed = $('<div class ="feed"></div>');
+        $feed.appendTo($body);
 
         var $refreshButton = $('<button id="new-tweets">New Tweets</button>');
-        $refreshButton.appendTo($body);
+        $refreshButton.appendTo($feed);
 
         var $backButton = $('<button id="back-button">Back To Feed</button>');
-        $backButton.appendTo($body).hide();
+        $backButton.appendTo($feed).hide();
 
-        var $tweetsDiv = $(`<div class="tweetsDiv"></div>`)
-        $tweetsDiv.appendTo($body);
+        var $tweetsDiv = $('<div class="tweetsDiv"></div>')
+        $tweetsDiv.appendTo($feed);
 
         //fetch first tweets
-        console.log(`streams.home.length: ${streams.home.length}`)
         //function fetchTweets() {
           var index = 0;
           while(index <= streams.home.length - 1){

@@ -1,7 +1,38 @@
-div.header {
-	text-align: left;
+
+button {
+	border-radius: 4px;
+  color: green;
+	display: block;
+	font-weight: 700;
+	width: 200px;
+	padding: 5px;
+	border: 1px solid green;
+  margin: 20px 100px;
 }
 
-div.tweet {
-	text-align: right;
+iframe {
+  width: 160px;
+  height: 120px;
+}
+
+.profile {
+  width: 200px;
+  float: left;
+  margin: 20px;
+}
+
+.tweet {
+  border-radius: 2px;
+  color: black;
+  display: block;
+  font-weight: 700;
+  width: 500px;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 20px;
+}
+
+.feed {
+  width: 600px;
+  float: right;
 }
